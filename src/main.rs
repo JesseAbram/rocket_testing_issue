@@ -7,7 +7,7 @@ mod tests;
 
 #[get("/world")]
 async fn world() -> &'static str {
-    let mut route = "http://127.0.0.1/hello/world".to_owned();
+    let route = "http://127.0.0.1:3002/hello/world".to_owned();
     reqwest::get(route).await.unwrap().text().await.unwrap();
     "Hello, world!"
 }

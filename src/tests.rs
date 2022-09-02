@@ -8,7 +8,7 @@ async fn hello_world() {
     let client = Client::tracked(crate::rocket().await)
         .await
         .expect("valid `Rocket`");
-    let client_2 = create_clients(3002).await;
+    let _client_2 = create_clients(3002).await;
     let response = client.get("/hello/world").dispatch().await;
     // assert_eq!(response.into_string(), Some("Hello, world!".into()));
     assert_eq!(response.status(), Status::Ok);
