@@ -7,12 +7,18 @@ mod tests;
 
 #[get("/world")]
 async fn world() -> &'static str {
-    let route = "http://127.0.0.1:3002/hello/world".to_owned();
+    let route = "http://127.0.0.1:3002/hello/test".to_owned();
     reqwest::get(route).await.unwrap().text().await.unwrap();
     "Hello, world!"
 }
 
+#[get("/test")]
+async fn test() {
+
+}
+
+
 #[launch]
 async fn rocket() -> _ {
-    rocket::build().mount("/hello", routes![world])
+    rocket::build().mount("/hello", routes![world, test])
 }
